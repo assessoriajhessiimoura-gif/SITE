@@ -38,7 +38,7 @@ export default function Course() {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/WhatsApp_Image_2026-02-16_at_14.40.49.jpeg"
+                src="/WhatsApp_Image_2026-02-16_at_12.53.19_(1).jpeg"
                 alt="Curso de Extensão de Cílios"
                 className="w-full h-full object-cover"
               />
