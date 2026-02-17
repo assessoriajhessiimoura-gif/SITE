@@ -8,13 +8,20 @@ export default function Hero() {
     setIsVisible(true);
   }, []);
 
+  // Scroll corrigido (espera renderização)
   const scrollToProcedures = () => {
-    document.getElementById('procedures')?.scrollIntoView({ behavior: 'smooth' });
+    const section = document.getElementById('procedures');
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      
+
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -25,13 +32,19 @@ export default function Hero() {
         {/* Overlay escuro para contraste */}
         <div className="absolute inset-0 bg-black/35"></div>
 
-        {/* Gradiente rosa inferior */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#E8A598] via-[#E8A598]/70 to-transparent"></div>
+        {/* Gradiente rosé suave fiel ao layout */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[70%]"
+          style={{
+            background:
+              'linear-gradient(to top, rgba(220,138,128,0.92) 0%, rgba(232,165,152,0.65) 40%, rgba(244,174,167,0.35) 70%, rgba(255,255,255,0) 100%)',
+          }}
+        ></div>
       </div>
 
       {/* Conteúdo */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-        
+
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -79,11 +92,14 @@ export default function Hero() {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
-          {/* Botão Ver Procedimentos ajustado para degradê verde */}
+          {/* Botão corrigido + cores ajustadas para combinar com o site */}
           <button
             onClick={scrollToProcedures}
-            className="px-8 py-4 bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
+            className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            style={{
+              fontFamily: 'Montserrat, sans-serif',
+              background: 'linear-gradient(90deg, #D69C90, #C17B6C, #B56A5A)'
+            }}
           >
             Ver Procedimentos
           </button>
