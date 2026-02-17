@@ -14,17 +14,24 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      
+      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#E8A598] via-[#E8A598]/60 to-transparent"
-             style={{ backgroundPosition: 'bottom', height: '60%', bottom: 0, top: 'auto' }} />
+        {/* Overlay escuro para contraste */}
+        <div className="absolute inset-0 bg-black/35"></div>
+
+        {/* Gradiente rosa inferior */}
+        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#E8A598] via-[#E8A598]/70 to-transparent"></div>
       </div>
 
+      {/* Conteúdo */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+        
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -33,8 +40,8 @@ export default function Hero() {
             fontFamily: 'Playfair Display, serif',
             fontWeight: 700,
             letterSpacing: '0.02em',
-            color: '#8B5E4D',
-            textShadow: '1px 2px 8px rgba(255,255,255,0.2)'
+            color: '#FDF6F3',
+            textShadow: '0px 4px 20px rgba(0,0,0,0.4)'
           }}
         >
           BIANCA MOURA
@@ -46,10 +53,9 @@ export default function Hero() {
           }`}
           style={{
             fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 400,
             letterSpacing: '0.15em',
-            color: '#F5F5F5',
-            textShadow: '1px 2px 8px rgba(0,0,0,0.3)'
+            color: '#FFFFFF',
+            textShadow: '0px 3px 12px rgba(0,0,0,0.5)'
           }}
         >
           Lash Designer
@@ -61,9 +67,8 @@ export default function Hero() {
           }`}
           style={{
             fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 400,
-            color: '#F5F5F5',
-            textShadow: '1px 2px 8px rgba(0,0,0,0.3)'
+            color: '#FFFFFF',
+            textShadow: '0px 3px 12px rgba(0,0,0,0.5)'
           }}
         >
           Beleza, técnica e elegância em cada olhar.
