@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Award, Clock, Users, BookOpen } from 'lucide-react';
+import { Award, Clock, Users, BookOpen, CheckCircle } from 'lucide-react';
 
 export default function Course() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,18 +17,21 @@ export default function Course() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="py-20 px-4 bg-gradient-to-br from-[#D4A598] via-[#C97D6F] to-[#B87A6D]"
+      className="py-20 px-4 bg-gradient-to-br from-[#FDF7F2] via-[#FAF0E6] to-[#F5ECE1] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          
+
           {/* Imagem do curso */}
           <div
             className={`relative transition-all duration-1000 ${
@@ -48,126 +51,86 @@ export default function Course() {
             </div>
           </div>
 
-          {/* Conteúdo do curso */}
+          {/* Texto e informações do curso */}
           <div
             className={`transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
             }`}
           >
             <h2
-              className="text-4xl md:text-5xl font-serif text-white mb-6 drop-shadow-sm"
+              className="text-4xl md:text-5xl font-serif text-[#7a4e45] mb-6 drop-shadow-sm"
               style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}
             >
               Curso de Extensão de Cílios
             </h2>
 
-            <p
-              className="text-lg text-white mb-8 leading-relaxed opacity-95"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Aprenda a arte de transformar olhares com técnica, profissionalismo e elegância.
-              Um curso completo que vai te preparar para dominar todas as técnicas de extensão
-              de cílios fio a fio.
-            </p>
+            <div className="space-y-6 mb-8">
+              {/* Lista de Materiais */}
+              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+                <h3 className="text-xl font-semibold text-[#8B5E4D] mb-4">Lista de Materiais</h3>
+                <p className="text-[#7a4e45] opacity-90">
+                  Materiais a parte
+                </p>
+              </div>
 
-            {/* Benefícios do curso */}
-            <div className="space-y-4 mb-6">
-              <div className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                <Clock className="text-white flex-shrink-0" size={24} />
-                <div>
-                  <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Carga Horária Completa
-                  </h4>
-                  <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Teoria e prática intensiva para domínio completo
-                  </p>
+              {/* Benefícios */}
+              <div className="grid gap-4 md:grid-cols-2">
+                {[
+                  { icon: CheckCircle, title: 'Certificado Reconhecido', desc: 'Certificação profissional reconhecida pelo mercado' },
+                  { icon: Users, title: 'Curso VIP', desc: 'Turmas reduzidas e atendimento personalizado' },
+                  { icon: Clock, title: 'Suporte Completo', desc: 'Acompanhamento durante o curso' },
+                  { icon: Award, title: 'Suporte Pós-Curso', desc: 'Dúvidas e orientações após concluir' },
+                ].map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20 transition-all hover:scale-[1.02] duration-300"
+                  >
+                    <benefit.icon className="text-[#C17B6C] flex-shrink-0" size={24} />
+                    <div>
+                      <h4 className="text-[#8B5E4D] font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        {benefit.title}
+                      </h4>
+                      <p className="text-[#7a4e45] text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        {benefit.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* O que você vai aprender */}
+              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+                <h3 className="text-xl font-semibold text-[#8B5E4D] mb-4">O que você vai aprender</h3>
+                <ul className="list-disc list-inside text-[#7a4e45] space-y-2">
+                  <li>Técnicas de alongamento e fios tecnológicos</li>
+                  <li>Alinhamento e direcionamento dos cílios</li>
+                  <li>Cuidados e manutenção</li>
+                </ul>
+              </div>
+
+              {/* Valores destacados */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <div className="flex-1 bg-[#FCE6DC]/90 backdrop-blur-md rounded-2xl p-4 text-center border border-[#F5D3C2]">
+                  <p className="text-lg font-semibold text-[#8B5E4D]">1 Dia</p>
+                  <p className="text-2xl font-bold text-[#7a4e45]">R$ 650,00</p>
+                </div>
+                <div className="flex-1 bg-[#FCE6DC]/90 backdrop-blur-md rounded-2xl p-4 text-center border border-[#F5D3C2]">
+                  <p className="text-lg font-semibold text-[#8B5E4D]">2 Dias</p>
+                  <p className="text-2xl font-bold text-[#7a4e45]">R$ 850,00</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                <Users className="text-white flex-shrink-0" size={24} />
-                <div>
-                  <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Curso VIP
-                  </h4>
-                  <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Turmas reduzidas e atendimento personalizado
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                <Clock className="text-white flex-shrink-0" size={24} />
-                <div>
-                  <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Suporte Completo
-                  </h4>
-                  <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Acompanhamento durante o curso
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                <BookOpen className="text-white flex-shrink-0" size={24} />
-                <div>
-                  <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Suporte Pós-Curso
-                  </h4>
-                  <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Dúvidas e orientações após concluir
-                  </p>
-                </div>
-              </div>
-
-              {/* Lista de Materiais - quadro separado */}
-              <div className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                <BookOpen className="text-white flex-shrink-0" size={24} />
-                <div>
-                  <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Lista de Materiais
-                  </h4>
-                  <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Materiais a parte
-                  </p>
-                </div>
-              </div>
+              {/* Botão Quero me inscrever */}
+              <a
+                href="https://wa.me/5531991028853?text=Oi quero informações sobre o curso de extensão de cílios!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-6 px-8 py-4 bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] text-white font-semibold rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Quero me inscrever
+              </a>
             </div>
-
-            {/* O que você vai aprender */}
-            <div className="bg-white/15 backdrop-blur-md rounded-3xl p-6 border border-white/20 mb-6">
-              <h3 className="text-2xl text-white font-semibold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                O que você vai aprender
-              </h3>
-              <ul className="list-disc list-inside text-white text-sm space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <li>Técnicas de alongamento e fios tecnológicos</li>
-                <li>Alinhamento e direcionamento dos cílios</li>
-                <li>Cuidados e manutenção</li>
-              </ul>
-            </div>
-
-            {/* Valores */}
-            <div className="flex gap-4 mb-8">
-              <div className="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-4 text-center border border-white/20">
-                <p className="text-white font-semibold text-lg">1 dia</p>
-                <p className="text-white font-bold text-2xl">R$650</p>
-              </div>
-              <div className="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-4 text-center border border-white/20">
-                <p className="text-white font-semibold text-lg">2 dias</p>
-                <p className="text-white font-bold text-2xl">R$850</p>
-              </div>
-            </div>
-
-            {/* Botão inscrição */}
-            <a
-              href="https://wa.me/5531991028853?text=Oi quero informações sobre o curso de extensão de cílios!"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Quero me inscrever
-            </a>
           </div>
         </div>
       </div>
