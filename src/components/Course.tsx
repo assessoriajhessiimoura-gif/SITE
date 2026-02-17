@@ -99,10 +99,10 @@ export default function Course() {
                 <BookOpen className="text-white flex-shrink-0" size={24} />
                 <div>
                   <h4 className="text-white font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Material Completo
+                    Lista de materiais
                   </h4>
                   <p className="text-white text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Kit profissional incluído no curso
+                   (Materiais a parte)
                   </p>
                 </div>
               </div>
