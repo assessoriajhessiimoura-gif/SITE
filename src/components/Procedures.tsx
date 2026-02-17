@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Procedure {
   name: string;
@@ -50,13 +50,47 @@ const Procedures = () => {
   const [selectedProcedure, setSelectedProcedure] =
     useState<Procedure | null>(null);
 
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(
+    new Array(procedures.length).fill(false)
+  );
+
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((card, index) => {
+      if (!card) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleCards((prev) => {
+                const updated = [...prev];
+                updated[index] = true;
+                return updated;
+              });
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(card);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   const handlePagamento = () => {
     window.open("https://pag.ae/81vUL4Buv", "_blank");
     setSelectedProcedure(null);
   };
 
   return (
-    <section className="py-20 px-6 bg-[#f4d7cd]">
+    <section className="py-20 px-6 bg-[#f4d7cd] overflow-hidden">
       <h2 className="text-4xl font-bold text-center mb-14 text-[#7a4e45]">
         Nossos Procedimentos
       </h2>
@@ -65,13 +99,23 @@ const Procedures = () => {
         {procedures.map((procedure, index) => (
           <div
             key={index}
-            className="bg-[#fff5f0] border border-[#e8b8a8] rounded-3xl shadow-lg p-6 flex flex-col transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+            ref={(el) => (cardRefs.current[index] = el)}
+            className={`group bg-[#fff5f0] border border-[#e8b8a8] rounded-3xl shadow-lg p-6 flex flex-col
+            transition-all duration-700
+            ${
+              visibleCards[index]
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }
+            hover:-translate-y-3 hover:shadow-2xl`}
           >
-            <img
-              src={procedure.image}
-              alt={procedure.name}
-              className="w-full h-52 object-cover rounded-2xl mb-4"
-            />
+            <div className="overflow-hidden rounded-2xl mb-4">
+              <img
+                src={procedure.image}
+                alt={procedure.name}
+                className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
 
             <h3 className="text-xl font-semibold text-[#7a4e45]">
               {procedure.name}
@@ -88,7 +132,11 @@ const Procedures = () => {
             <div className="mt-auto">
               <button
                 onClick={() => setSelectedProcedure(procedure)}
-                className="w-full mt-6 py-3 rounded-2xl text-white font-medium bg-gradient-to-r from-green-500 to-green-600 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                className="w-full mt-6 py-3 rounded-2xl text-white font-semibold
+                bg-gradient-to-r from-[#c4685c] via-[#d27b6f] to-[#e2a08f]
+                shadow-md hover:shadow-2xl
+                hover:scale-[1.03] hover:-translate-y-1
+                transition-all duration-300"
               >
                 Agendar
               </button>
@@ -97,9 +145,8 @@ const Procedures = () => {
         ))}
       </div>
 
-      {/* Modal */}
       {selectedProcedure && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-8 w-[90%] max-w-md shadow-2xl animate-fade-in">
             <h3 className="text-2xl font-bold text-center mb-6 text-[#7a4e45]">
               {selectedProcedure.name}
@@ -107,21 +154,27 @@ const Procedures = () => {
 
             <button
               onClick={handlePagamento}
-              className="w-full mb-4 py-3 rounded-2xl text-white font-medium bg-gradient-to-r from-[#c4685c] to-[#a84e43] hover:-translate-y-1 transition duration-300"
+              className="w-full mb-4 py-3 rounded-2xl text-white font-semibold
+              bg-gradient-to-r from-[#c4685c] to-[#a84e43]
+              hover:scale-[1.02] hover:-translate-y-1
+              transition-all duration-300"
             >
               Aplicação – R$ {selectedProcedure.price.toFixed(2)}
             </button>
 
             <button
               onClick={handlePagamento}
-              className="w-full py-3 rounded-2xl text-white font-medium bg-gradient-to-r from-[#a85c52] to-[#7a4e45] hover:-translate-y-1 transition duration-300"
+              className="w-full py-3 rounded-2xl text-white font-semibold
+              bg-gradient-to-r from-[#a85c52] to-[#7a4e45]
+              hover:scale-[1.02] hover:-translate-y-1
+              transition-all duration-300"
             >
               Manutenção – R$ {selectedProcedure.maintenancePrice.toFixed(2)}
             </button>
 
             <button
               onClick={() => setSelectedProcedure(null)}
-              className="mt-6 text-sm text-gray-500 w-full"
+              className="mt-6 text-sm text-gray-500 w-full hover:text-gray-700 transition"
             >
               Cancelar
             </button>
