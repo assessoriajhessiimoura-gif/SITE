@@ -25,8 +25,8 @@ export default function Hero() {
         {/* Overlay escuro para contraste */}
         <div className="absolute inset-0 bg-black/35"></div>
 
-        {/* Gradiente rosa inferior */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#E8A598] via-[#E8A598]/70 to-transparent"></div>
+        {/* Gradiente inferior suave */}
+        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#8BC34A]/80 via-[#A5D6A7]/50 to-transparent"></div>
       </div>
 
       {/* Conteúdo */}
@@ -79,14 +79,16 @@ export default function Hero() {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
+          {/* Botão Ver Procedimentos com degradê verde */}
           <button
             onClick={scrollToProcedures}
-            className="px-8 py-4 bg-gradient-to-r from-[#C17B6C] to-[#D4967E] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            className="px-8 py-4 bg-gradient-to-r from-[#66BB6A] via-[#81C784] to-[#A5D6A7] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Ver Procedimentos
           </button>
 
+          {/* Botão Instagram */}
           <a
             href="https://www.instagram.com/bianca.cilioss?igsh=MW0yeWJ2Yjh5b2g4bw=="
             target="_blank"
