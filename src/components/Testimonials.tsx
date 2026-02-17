@@ -1,5 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
 import { Star } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 interface Testimonial {
   name: string;
@@ -34,46 +38,17 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
-  const [visibleTestimonials, setVisibleTestimonials] = useState<boolean[]>(new Array(testimonials.length).fill(false));
-  const testimonialRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observers = testimonialRefs.current.map((testimonial, index) => {
-      if (!testimonial) return null;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setVisibleTestimonials(prev => {
-                const newState = [...prev];
-                newState[index] = true;
-                return newState;
-              });
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      observer.observe(testimonial);
-      return observer;
-    });
-
-    return () => {
-      observers.forEach(observer => observer?.disconnect());
-    };
-  }, []);
-
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-[#F5E6E0] to-[#E8D5CE]">
+    <section className="py-20 px-4 bg-gradient-to-br from-[#F5E6E0] to-[#E8D5CE] overflow-hidden">
       <div className="max-w-6xl mx-auto">
+        
         <h2
           className="text-4xl md:text-5xl font-serif text-center text-[#8B5E4D] mb-4"
           style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}
         >
           O que minhas clientes dizem
         </h2>
+
         <p
           className="text-center text-[#A67C6D] mb-12 text-lg"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -81,37 +56,47 @@ export default function Testimonials() {
           Experiências reais de quem confia no meu trabalho
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-6">
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          loop
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }}
+        >
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              ref={el => testimonialRefs.current[index] = el}
-              className={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ${
-                visibleTestimonials[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <h3
-                className="text-xl font-semibold text-[#8B5E4D] mb-3"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                {testimonial.name}
-              </h3>
+            <SwiperSlide key={index}>
+              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
+                
+                <h3
+                  className="text-xl font-semibold text-[#8B5E4D] mb-3"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                >
+                  {testimonial.name}
+                </h3>
 
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-[#F5C542] fill-[#F5C542]" size={20} />
-                ))}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="text-[#F5C542] fill-[#F5C542]" size={20} />
+                  ))}
+                </div>
+
+                <p
+                  className="text-[#A67C6D] leading-relaxed"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                >
+                  "{testimonial.text}"
+                </p>
+
               </div>
-
-              <p
-                className="text-[#A67C6D] leading-relaxed"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                "{testimonial.text}"
-              </p>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
+
       </div>
     </section>
   );
