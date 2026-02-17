@@ -133,9 +133,9 @@ const Procedures = () => {
               <button
                 onClick={() => setSelectedProcedure(procedure)}
                 className="w-full mt-6 py-3 rounded-2xl text-white font-semibold
-                bg-gradient-to-r from-[#c4685c] via-[#d27b6f] to-[#e2a08f]
+                bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600
                 shadow-md hover:shadow-2xl
-                hover:scale-[1.03] hover:-translate-y-1
+                hover:scale-[1.03] hover:-translate-y-1 hover:brightness-110
                 transition-all duration-300"
               >
                 Agendar
@@ -155,8 +155,8 @@ const Procedures = () => {
             <button
               onClick={handlePagamento}
               className="w-full mb-4 py-3 rounded-2xl text-white font-semibold
-              bg-gradient-to-r from-[#c4685c] to-[#a84e43]
-              hover:scale-[1.02] hover:-translate-y-1
+              bg-gradient-to-r from-green-500 to-emerald-600
+              hover:scale-[1.02] hover:-translate-y-1 hover:brightness-110
               transition-all duration-300"
             >
               Aplicação – R$ {selectedProcedure.price.toFixed(2)}
@@ -165,8 +165,8 @@ const Procedures = () => {
             <button
               onClick={handlePagamento}
               className="w-full py-3 rounded-2xl text-white font-semibold
-              bg-gradient-to-r from-[#a85c52] to-[#7a4e45]
-              hover:scale-[1.02] hover:-translate-y-1
+              bg-gradient-to-r from-emerald-600 to-green-700
+              hover:scale-[1.02] hover:-translate-y-1 hover:brightness-110
               transition-all duration-300"
             >
               Manutenção – R$ {selectedProcedure.maintenancePrice.toFixed(2)}
