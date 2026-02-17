@@ -29,7 +29,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Fernanda Oliveira',
-    text: 'Fiz o curso e aprendir tudo que preciso! A Bianca ensina com paciência e detalhe. Já estou aplicando em minhas clientes e os resultados falam por si.'
+    text: 'Fiz o curso e aprendi tudo que preciso! A Bianca ensina com paciência e detalhe. Já estou aplicando em minhas clientes e os resultados falam por si.'
   },
   {
     name: 'Patricia Mendes',
@@ -41,7 +41,7 @@ export default function Testimonials() {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-[#F5E6E0] to-[#E8D5CE] overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         <h2
           className="text-4xl md:text-5xl font-serif text-center text-[#8B5E4D] mb-4"
           style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}
@@ -61,17 +61,27 @@ export default function Testimonials() {
           spaceBetween={30}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
-          loop
+          autoplay={{ 
+            delay: 4000, 
+            disableOnInteraction: false 
+          }}
+          loop={true}
+          style={{ paddingBottom: '40px' }}
           breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
           }}
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
-                
+              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+
                 <h3
                   className="text-xl font-semibold text-[#8B5E4D] mb-3"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -81,7 +91,11 @@ export default function Testimonials() {
 
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="text-[#F5C542] fill-[#F5C542]" size={20} />
+                    <Star 
+                      key={i} 
+                      className="text-[#F5C542] fill-[#F5C542]" 
+                      size={20} 
+                    />
                   ))}
                 </div>
 
