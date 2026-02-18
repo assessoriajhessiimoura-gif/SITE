@@ -85,10 +85,12 @@ export default function Hero() {
           {/* Botão Procedimentos */}
           <a
             href="#procedures"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
+            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-110"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF4B6E,#FF6B35)", // degradê vibrante coral
+              background: "linear-gradient(135deg,#FF7A8A,#FF9C85)",
+              backgroundSize: "200% 200%",
+              animation: "gradientShift 6s ease infinite",
             }}
           >
             Ver Procedimentos
@@ -96,17 +98,28 @@ export default function Hero() {
 
           {/* Botão Curso */}
           <a
-            href="#curso"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
+            href="#courses"
+            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-110"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF9A00,#FF5E7D)", // degradê vibrante laranja/rosa
+              background: "linear-gradient(135deg,#FFAD7F,#FF8FA0)",
+              backgroundSize: "200% 200%",
+              animation: "gradientShift 6s ease infinite",
             }}
           >
             Ver Curso
           </a>
         </div>
       </div>
+
+      {/* Gradiente animado dos botões */}
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </section>
   );
 }
