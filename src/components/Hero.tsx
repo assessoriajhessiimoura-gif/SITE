@@ -1,5 +1,5 @@
-import { Instagram } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Instagram } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,13 +15,13 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)',
+          backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
         }}
       >
         {/* sombra quente */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'rgba(60,30,25,0.28)' }}
+          style={{ background: "rgba(60,30,25,0.28)" }}
         ></div>
 
         {/* degradê rosé */}
@@ -29,7 +29,7 @@ export default function Hero() {
           className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
           style={{
             background:
-              'linear-gradient(to top, rgba(219,139,128,0.95) 0%, rgba(235,167,156,0.65) 45%, rgba(248,190,180,0.35) 70%, rgba(255,255,255,0) 100%)',
+              "linear-gradient(to top, rgba(219,139,128,0.95) 0%, rgba(235,167,156,0.65) 45%, rgba(248,190,180,0.35) 70%, rgba(255,255,255,0) 100%)",
           }}
         ></div>
       </div>
@@ -39,14 +39,14 @@ export default function Hero() {
         
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
-            fontFamily: 'Playfair Display, serif',
+            fontFamily: "Playfair Display, serif",
             fontWeight: 700,
-            letterSpacing: '0.02em',
-            color: '#FDF6F3',
-            textShadow: '0px 4px 20px rgba(0,0,0,0.4)'
+            letterSpacing: "0.02em",
+            color: "#FDF6F3",
+            textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
           }}
         >
           BIANCA MOURA
@@ -54,13 +54,13 @@ export default function Hero() {
 
         <p
           className={`text-xl md:text-2xl mb-6 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
-            fontFamily: 'Montserrat, sans-serif',
-            letterSpacing: '0.15em',
-            color: '#FFFFFF',
-            textShadow: '0px 3px 12px rgba(0,0,0,0.5)'
+            fontFamily: "Montserrat, sans-serif",
+            letterSpacing: "0.15em",
+            color: "#FFFFFF",
+            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
           }}
         >
           Lash Designer
@@ -68,12 +68,12 @@ export default function Hero() {
 
         <p
           className={`text-lg md:text-xl mb-12 max-w-2xl transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
-            fontFamily: 'Montserrat, sans-serif',
-            color: '#FFFFFF',
-            textShadow: '0px 3px 12px rgba(0,0,0,0.5)'
+            fontFamily: "Montserrat, sans-serif",
+            color: "#FFFFFF",
+            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
           }}
         >
           Beleza, técnica e elegância em cada olhar.
@@ -81,27 +81,28 @@ export default function Hero() {
 
         <div
           className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {/* BOTÃO AGORA FUNCIONA */}
+          {/* Botão Procedimentos */}
           <a
             href="#procedures"
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             style={{
-              fontFamily: 'Montserrat, sans-serif',
-              background: 'linear-gradient(135deg,#E0AFA6,#C98778,#B56A5A)'
+              fontFamily: "Montserrat, sans-serif",
+              background: "linear-gradient(135deg,#E0AFA6,#C98778,#B56A5A)"
             }}
           >
             Ver Procedimentos
           </a>
 
+          {/* Botão Instagram */}
           <a
-            href="https://www.instagram.com/bianca.cilioss?igsh=MW0yeWJ2Yjh5b2g4bw=="
+            href="https://www.instagram.com/bianca.cilioss/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F56040] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-[#C17B6C]"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
+            style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             <Instagram size={20} />
             Instagram
