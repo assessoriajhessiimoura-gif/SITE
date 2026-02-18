@@ -82,7 +82,6 @@ export default function Hero() {
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {/* Botão Procedimentos */}
           <a
             href="#procedures"
             className="px-10 py-4 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95"
@@ -98,7 +97,6 @@ export default function Hero() {
             Ver Procedimentos
           </a>
 
-          {/* Botão Curso */}
           <a
             href="#course"
             className="px-10 py-4 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95"
@@ -113,6 +111,15 @@ export default function Hero() {
           >
             Ver Curso
           </a>
+        </div>
+
+        {/* Logo Assinatura */}
+        <div className="mt-10 opacity-85">
+          <img
+            src="/logo_transparente.png"
+            alt="Logo Bianca Moura"
+            className="w-28 md:w-32 mx-auto"
+          />
         </div>
       </div>
     </section>
