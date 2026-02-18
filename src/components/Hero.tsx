@@ -1,4 +1,3 @@
-import { Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
@@ -8,15 +7,17 @@ export default function Hero() {
     setIsVisible(true);
   }, []);
 
+  const scrollToCourse = () => {
+    document.getElementById("course")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
-        }}
+        style={{ backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)" }}
       >
         {/* sombra */}
         <div
@@ -84,7 +85,7 @@ export default function Hero() {
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {/* Botão Procedimentos */}
+          {/* Botão Ver Procedimentos */}
           <a
             href="#procedures"
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -96,17 +97,17 @@ export default function Hero() {
             Ver Procedimentos
           </a>
 
-          {/* Botão Instagram - corrigido */}
-          <a
-            href="https://instagram.com/bianca.cilioss"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F56040] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-[#C17B6C]"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
+          {/* Botão Ver Curso */}
+          <button
+            onClick={scrollToCourse}
+            className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            style={{
+              fontFamily: "Montserrat, sans-serif",
+              background: "linear-gradient(135deg,#F5D3C2,#E8BFB3,#DCAFA3)"
+            }}
           >
-            <Instagram size={20} />
-            Instagram
-          </a>
+            Ver Curso
+          </button>
         </div>
       </div>
     </section>
