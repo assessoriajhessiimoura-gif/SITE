@@ -98,7 +98,7 @@ export default function Hero() {
 
           {/* Botão Instagram - versão estável */}
           <a
-            href="https://www.instagram.com/bianca.cilioss/?utm_source=site"
+            href="https://www.instagram.com/bianca.cilioss?igsh=MW0yeWJ2Yjh5b2g4bw=="
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F56040] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-[#C17B6C]"
