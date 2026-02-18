@@ -112,15 +112,6 @@ export default function Hero() {
             Ver Curso
           </a>
         </div>
-
-        {/* Logo Assinatura */}
-        <div className="mt-10 opacity-100 relative z-30">
-          <img
-            src="/logo-bianca-moura.jpeg"
-            alt="Logo Bianca Moura"
-            className="w-28 md:w-32 mx-auto"
-          />
-        </div>
       </div>
     </section>
   );
