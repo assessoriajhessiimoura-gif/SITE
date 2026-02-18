@@ -8,16 +8,6 @@ export default function Hero() {
     setIsVisible(true);
   }, []);
 
-  const scrollToProcedures = () => {
-    const section = document.getElementById('procedures');
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
-
   return (
     <section className="relative h-screen w-full overflow-hidden">
       
@@ -28,14 +18,13 @@ export default function Hero() {
           backgroundImage: 'url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)',
         }}
       >
-
-        {/* sombra quente (REMOVE O VERDE) */}
+        {/* sombra quente */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'rgba(60,30,25,0.28)' }}
         ></div>
 
-        {/* degradê rosé igual ao print */}
+        {/* degradê rosé */}
         <div
           className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
           style={{
@@ -95,16 +84,17 @@ export default function Hero() {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
-          <button
-            onClick={scrollToProcedures}
+          {/* BOTÃO AGORA FUNCIONA */}
+          <a
+            href="#procedures"
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             style={{
               fontFamily: 'Montserrat, sans-serif',
-              background: 'linear-gradient(90deg,#C17B6C,#D4967E)'
+              background: 'linear-gradient(135deg,#E0AFA6,#C98778,#B56A5A)'
             }}
           >
             Ver Procedimentos
-          </button>
+          </a>
 
           <a
             href="https://www.instagram.com/bianca.cilioss?igsh=MW0yeWJ2Yjh5b2g4bw=="
