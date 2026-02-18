@@ -16,13 +16,13 @@ export default function Hero() {
           backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
         }}
       >
-        {/* sombra */}
+        {/* Sombra */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "rgba(60,30,25,0.28)" }}
         ></div>
 
-        {/* degradê rosé */}
+        {/* Degradê rosé */}
         <div
           className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
           style={{
@@ -34,7 +34,6 @@ export default function Hero() {
 
       {/* Conteúdo */}
       <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center">
-        
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -44,7 +43,7 @@ export default function Hero() {
             fontWeight: 700,
             letterSpacing: "0.02em",
             color: "#FDF6F3",
-            textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
+            textShadow: "0px 4px 20px rgba(0,0,0,0.4)",
           }}
         >
           BIANCA MOURA
@@ -58,7 +57,7 @@ export default function Hero() {
             fontFamily: "Montserrat, sans-serif",
             letterSpacing: "0.15em",
             color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
+            textShadow: "0px 3px 12px rgba(0,0,0,0.5)",
           }}
         >
           Lash Designer
@@ -71,12 +70,13 @@ export default function Hero() {
           style={{
             fontFamily: "Montserrat, sans-serif",
             color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
+            textShadow: "0px 3px 12px rgba(0,0,0,0.5)",
           }}
         >
           Beleza, técnica e elegância em cada olhar.
         </p>
 
+        {/* Botões */}
         <div
           className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -98,7 +98,7 @@ export default function Hero() {
 
           {/* Botão Curso */}
           <a
-            href="#courses"
+            href="#course" // <--- ID correto para rolar até a seção de cursos
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-110"
             style={{
               fontFamily: "Montserrat, sans-serif",
