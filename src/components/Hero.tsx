@@ -78,19 +78,21 @@ export default function Hero() {
 
         {/* Botões */}
         <div
-          className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ${
+          className={`flex flex-col sm:flex-row gap-5 transition-all duration-1000 delay-500 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
           {/* Botão Procedimentos */}
           <a
             href="#procedures"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-110"
+            className="px-10 py-4 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF7A8A,#FF9C85)",
-              backgroundSize: "200% 200%",
-              animation: "gradientShift 6s ease infinite",
+              background:
+                "linear-gradient(145deg, rgba(46,111,126,0.92), rgba(31,78,95,0.92))",
+              backdropFilter: "blur(8px)",
+              boxShadow:
+                "0 12px 30px rgba(0,0,0,0.28), inset 0 2px 6px rgba(255,255,255,0.25)",
             }}
           >
             Ver Procedimentos
@@ -98,28 +100,21 @@ export default function Hero() {
 
           {/* Botão Curso */}
           <a
-            href="#course" // <--- ID correto para rolar até a seção de cursos
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-110"
+            href="#course"
+            className="px-10 py-4 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FFAD7F,#FF8FA0)",
-              backgroundSize: "200% 200%",
-              animation: "gradientShift 6s ease infinite",
+              background:
+                "linear-gradient(145deg, rgba(36,92,105,0.85), rgba(24,64,78,0.85))",
+              backdropFilter: "blur(8px)",
+              boxShadow:
+                "0 12px 30px rgba(0,0,0,0.28), inset 0 2px 6px rgba(255,255,255,0.25)",
             }}
           >
             Ver Curso
           </a>
         </div>
       </div>
-
-      {/* Gradiente animado dos botões */}
-      <style jsx>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </section>
   );
 }
