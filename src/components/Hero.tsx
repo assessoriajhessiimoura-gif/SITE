@@ -7,17 +7,14 @@ export default function Hero() {
     setIsVisible(true);
   }, []);
 
-  const scrollToCourse = () => {
-    document.getElementById("course")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)" }}
+        style={{
+          backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
+        }}
       >
         {/* sombra */}
         <div
@@ -85,29 +82,29 @@ export default function Hero() {
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {/* Botão Ver Procedimentos */}
+          {/* Botão Procedimentos */}
           <a
             href="#procedures"
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#E0AFA6,#C98778,#B56A5A)"
+              background: "linear-gradient(135deg,#FF6B6B,#FF8E72)", // degradê coral mais forte
             }}
           >
             Ver Procedimentos
           </a>
 
-          {/* Botão Ver Curso */}
-          <button
-            onClick={scrollToCourse}
+          {/* Botão Curso */}
+          <a
+            href="#curso"
             className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#F5D3C2,#E8BFB3,#DCAFA3)"
+              background: "linear-gradient(135deg,#FFD2A6,#FFBFA3)", // degradê pêssego/rosa claro
             }}
           >
             Ver Curso
-          </button>
+          </a>
         </div>
       </div>
     </section>
