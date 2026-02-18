@@ -1,110 +1,139 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { Award, Clock, Users, CheckCircle } from 'lucide-react';
 
-export default function Hero() {
+export default function Course() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
-        }}
-      >
-        {/* sombra */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "rgba(60,30,25,0.28)" }}
-        ></div>
+    <section
+      id="course"  // ID para o botão do Hero rolar corretamente
+      ref={sectionRef}
+      className="py-20 px-4 bg-gradient-to-br from-[#FDF7F2] via-[#FAF0E6] to-[#F5ECE1] overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
 
-        {/* degradê rosé */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(219,139,128,0.95) 0%, rgba(235,167,156,0.65) 45%, rgba(248,190,180,0.35) 70%, rgba(255,255,255,0) 100%)",
-          }}
-        ></div>
-      </div>
-
-      {/* Conteúdo */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center">
-        
-        <h1
-          className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-          style={{
-            fontFamily: "Playfair Display, serif",
-            fontWeight: 700,
-            letterSpacing: "0.02em",
-            color: "#FDF6F3",
-            textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
-          }}
-        >
-          BIANCA MOURA
-        </h1>
-
-        <p
-          className={`text-xl md:text-2xl mb-6 transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-          style={{
-            fontFamily: "Montserrat, sans-serif",
-            letterSpacing: "0.15em",
-            color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
-          }}
-        >
-          Lash Designer
-        </p>
-
-        <p
-          className={`text-lg md:text-xl mb-12 max-w-2xl transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-          style={{
-            fontFamily: "Montserrat, sans-serif",
-            color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
-          }}
-        >
-          Beleza, técnica e elegância em cada olhar.
-        </p>
-
-        <div
-          className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
-        >
-          {/* Botão Procedimentos */}
-          <a
-            href="#procedures"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
-            style={{
-              fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF4B6E,#FF6B35)", // degradê vibrante coral
-            }}
+          {/* Imagem do curso */}
+          <div
+            className={`relative transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+            }`}
           >
-            Ver Procedimentos
-          </a>
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="/WhatsApp_Image_2026-02-16_at_12.53.19_(1).jpeg"
+                alt="Curso de Extensão de Cílios"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-          {/* Botão Curso */}
-          <a
-            href="#curso"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
-            style={{
-              fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF9A00,#FF5E7D)", // degradê vibrante laranja/rosa
-            }}
+            <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl border border-white/40">
+              <Award className="text-[#C17B6C]" size={48} />
+            </div>
+          </div>
+
+          {/* Texto e informações do curso */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+            }`}
           >
-            Ver Curso
-          </a>
+            <h2
+              className="text-4xl md:text-5xl font-serif text-[#7a4e45] mb-6 drop-shadow-sm"
+              style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}
+            >
+              Curso de Extensão de Cílios
+            </h2>
+
+            <div className="space-y-6 mb-8">
+              {/* Lista de Materiais */}
+              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+                <h3 className="text-xl font-semibold text-[#8B5E4D] mb-4">Lista de Materiais</h3>
+                <p className="text-[#7a4e45] opacity-90">
+                  Materiais à parte
+                </p>
+              </div>
+
+              {/* Benefícios */}
+              <div className="grid gap-4 md:grid-cols-2">
+                {[
+                  { icon: CheckCircle, title: 'Certificado Reconhecido', desc: 'Certificação profissional reconhecida pelo mercado' },
+                  { icon: Users, title: 'Curso VIP', desc: 'Turmas reduzidas e atendimento personalizado' },
+                  { icon: Clock, title: 'Suporte Completo', desc: 'Acompanhamento durante o curso' },
+                  { icon: Award, title: 'Suporte Pós-Curso', desc: 'Dúvidas e orientações após concluir' },
+                ].map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20 transition-all hover:scale-[1.02] duration-300"
+                  >
+                    <benefit.icon className="text-[#C17B6C] flex-shrink-0" size={24} />
+                    <div>
+                      <h4 className="text-[#8B5E4D] font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        {benefit.title}
+                      </h4>
+                      <p className="text-[#7a4e45] text-sm opacity-90" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        {benefit.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* O que você vai aprender */}
+              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+                <h3 className="text-xl font-semibold text-[#8B5E4D] mb-4">O que você vai aprender</h3>
+                <ul className="list-disc list-inside text-[#7a4e45] space-y-2">
+                  <li>Técnicas de alongamento e fios tecnológicos</li>
+                  <li>Alinhamento e direcionamento dos cílios</li>
+                  <li>Cuidados e manutenção</li>
+                </ul>
+              </div>
+
+              {/* Valores destacados */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <div className="flex-1 bg-[#FCE6DC]/90 backdrop-blur-md rounded-2xl p-4 text-center border border-[#F5D3C2]">
+                  <p className="text-lg font-semibold text-[#8B5E4D]">1 Dia</p>
+                  <p className="text-2xl font-bold text-[#7a4e45]">R$ 650,00</p>
+                </div>
+                <div className="flex-1 bg-[#FCE6DC]/90 backdrop-blur-md rounded-2xl p-4 text-center border border-[#F5D3C2]">
+                  <p className="text-lg font-semibold text-[#8B5E4D]">2 Dias</p>
+                  <p className="text-2xl font-bold text-[#7a4e45]">R$ 850,00</p>
+                </div>
+              </div>
+
+              {/* Botão Quero me inscrever */}
+              <a
+                href="https://wa.me/5531991028853?text=Oi quero informações sobre o curso de extensão de cílios!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-6 px-8 py-4 bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] text-white font-semibold rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Quero me inscrever
+              </a>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
