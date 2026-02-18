@@ -18,7 +18,7 @@ export default function Hero() {
           backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
         }}
       >
-        {/* sombra quente */}
+        {/* sombra */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "rgba(60,30,25,0.28)" }}
@@ -96,9 +96,9 @@ export default function Hero() {
             Ver Procedimentos
           </a>
 
-          {/* Botão Instagram - FUNCIONA NO CELULAR */}
+          {/* Botão Instagram - versão estável */}
           <a
-            href="https://instagram.com/_u/bianca.cilioss"
+            href="https://www.instagram.com/bianca.cilioss/?utm_source=site"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F56040] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-[#C17B6C]"
