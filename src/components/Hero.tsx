@@ -9,32 +9,27 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)",
-        }}
-      >
-        {/* sombra */}
+      {/* Background vibrante */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url(/WhatsApp_Image_2026-02-17_at_16.23.22.jpeg)" }}
+        />
+        <div className="absolute inset-0 pointer-events-none bg-black/25" />
+        {/* degradê vibrante animado */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "rgba(60,30,25,0.28)" }}
-        ></div>
-
-        {/* degradê rosé */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
           style={{
-            background:
-              "linear-gradient(to top, rgba(219,139,128,0.95) 0%, rgba(235,167,156,0.65) 45%, rgba(248,190,180,0.35) 70%, rgba(255,255,255,0) 100%)",
+            background: "linear-gradient(135deg, #FF416C, #FF4B2B, #FF6B00, #FF8C42)",
+            backgroundSize: "400% 400%",
+            animation: "gradientMove 15s ease infinite",
+            mixBlendMode: "overlay",
           }}
-        ></div>
+        />
       </div>
 
       {/* Conteúdo */}
       <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center">
-        
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-serif mb-4 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -43,8 +38,8 @@ export default function Hero() {
             fontFamily: "Playfair Display, serif",
             fontWeight: 700,
             letterSpacing: "0.02em",
-            color: "#FDF6F3",
-            textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
+            color: "#FFFFFF",
+            textShadow: "0px 4px 25px rgba(0,0,0,0.6)",
           }}
         >
           BIANCA MOURA
@@ -58,7 +53,7 @@ export default function Hero() {
             fontFamily: "Montserrat, sans-serif",
             letterSpacing: "0.15em",
             color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
+            textShadow: "0px 3px 15px rgba(0,0,0,0.5)",
           }}
         >
           Lash Designer
@@ -71,7 +66,7 @@ export default function Hero() {
           style={{
             fontFamily: "Montserrat, sans-serif",
             color: "#FFFFFF",
-            textShadow: "0px 3px 12px rgba(0,0,0,0.5)"
+            textShadow: "0px 3px 15px rgba(0,0,0,0.5)",
           }}
         >
           Beleza, técnica e elegância em cada olhar.
@@ -85,10 +80,10 @@ export default function Hero() {
           {/* Botão Procedimentos */}
           <a
             href="#procedures"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            className="px-8 py-4 text-white font-bold rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FF6B6B,#FF8E72)", // degradê coral mais forte
+              background: "linear-gradient(135deg,#FF416C,#FF4B2B)",
             }}
           >
             Ver Procedimentos
@@ -97,16 +92,25 @@ export default function Hero() {
           {/* Botão Curso */}
           <a
             href="#curso"
-            className="px-8 py-4 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            className="px-8 py-4 text-white font-bold rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:brightness-125"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              background: "linear-gradient(135deg,#FFD2A6,#FFBFA3)", // degradê pêssego/rosa claro
+              background: "linear-gradient(135deg,#FF6B00,#FF8C42)",
             }}
           >
             Ver Curso
           </a>
         </div>
       </div>
+
+      {/* Animar gradiente */}
+      <style jsx>{`
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </section>
   );
 }
