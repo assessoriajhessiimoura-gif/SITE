@@ -114,9 +114,9 @@ export default function Hero() {
         </div>
 
         {/* Logo Assinatura */}
-        <div className="mt-10 opacity-85">
+        <div className="mt-10 opacity-100 relative z-30">
           <img
-            src="/logo_transparente.png"
+            src="/logo-bianca-moura.jpeg"
             alt="Logo Bianca Moura"
             className="w-28 md:w-32 mx-auto"
           />
