@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Award, Clock, Users, BookOpen, CheckCircle } from 'lucide-react';
+import { Award, Clock, Users, CheckCircle } from 'lucide-react';
 
 export default function Course() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +26,7 @@ export default function Course() {
 
   return (
     <section
+      id="course"  // <--- ID adicionado para scroll funcionar
       ref={sectionRef}
       className="py-20 px-4 bg-gradient-to-br from-[#FDF7F2] via-[#FAF0E6] to-[#F5ECE1] overflow-hidden"
     >
@@ -130,6 +131,7 @@ export default function Course() {
               >
                 Quero me inscrever
               </a>
+
             </div>
           </div>
         </div>
