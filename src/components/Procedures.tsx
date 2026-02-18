@@ -8,52 +8,17 @@ interface Procedure {
 }
 
 const procedures: Procedure[] = [
-  {
-    name: "Volume Brasileiro",
-    price: 165,
-    maintenancePrice: 110,
-    image: "/volume-brasileiro.jpeg",
-  },
-  {
-    name: "Volume Fox",
-    price: 165,
-    maintenancePrice: 110,
-    image: "/volume-fox.jpeg",
-  },
-  {
-    name: "Volume Fox Marrom",
-    price: 165,
-    maintenancePrice: 110,
-    image: "/volume-fox-marrom.jpeg",
-  },
-  {
-    name: "Volume Express",
-    price: 165,
-    maintenancePrice: 110,
-    image: "/volume-express.jpeg",
-  },
-  {
-    name: "Volume Europeu",
-    price: 165,
-    maintenancePrice: 110,
-    image: "/volume-europeu.jpeg",
-  },
-  {
-    name: "Mega Volume",
-    price: 180,
-    maintenancePrice: 120,
-    image: "/mega-volume.jpeg",
-  },
+  { name: "Volume Brasileiro", price: 165, maintenancePrice: 110, image: "/volume-brasileiro.jpeg" },
+  { name: "Volume Fox", price: 165, maintenancePrice: 110, image: "/volume-fox.jpeg" },
+  { name: "Volume Fox Marrom", price: 165, maintenancePrice: 110, image: "/volume-fox-marrom.jpeg" },
+  { name: "Volume Express", price: 165, maintenancePrice: 110, image: "/volume-express.jpeg" },
+  { name: "Volume Europeu", price: 165, maintenancePrice: 110, image: "/volume-europeu.jpeg" },
+  { name: "Mega Volume", price: 180, maintenancePrice: 120, image: "/mega-volume.jpeg" },
 ];
 
 const Procedures = () => {
-  const [selectedProcedure, setSelectedProcedure] =
-    useState<Procedure | null>(null);
-
-  const [visibleCards, setVisibleCards] = useState<boolean[]>(
-    new Array(procedures.length).fill(false)
-  );
-
+  const [selectedProcedure, setSelectedProcedure] = useState<Procedure | null>(null);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(procedures.length).fill(false));
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -79,9 +44,7 @@ const Procedures = () => {
       return observer;
     });
 
-    return () => {
-      observers.forEach((observer) => observer?.disconnect());
-    };
+    return () => observers.forEach((observer) => observer?.disconnect());
   }, []);
 
   const handlePagamento = () => {
@@ -90,7 +53,10 @@ const Procedures = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-[#f4d7cd] overflow-hidden">
+    <section
+      id="procedures"
+      className="py-20 px-6 bg-[#f4d7cd] overflow-hidden scroll-mt-24"
+    >
       <h2 className="text-4xl font-bold text-center mb-14 text-[#7a4e45]">
         Nossos Procedimentos
       </h2>
@@ -102,11 +68,7 @@ const Procedures = () => {
             ref={(el) => (cardRefs.current[index] = el)}
             className={`group bg-[#fff5f0] border border-[#e8b8a8] rounded-3xl shadow-lg p-6 flex flex-col
             transition-all duration-700
-            ${
-              visibleCards[index]
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }
+            ${visibleCards[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             hover:-translate-y-3 hover:shadow-2xl`}
           >
             <div className="overflow-hidden rounded-2xl mb-4">
@@ -133,7 +95,7 @@ const Procedures = () => {
               <button
                 onClick={() => setSelectedProcedure(procedure)}
                 className="w-full mt-6 py-3 rounded-2xl text-white font-semibold
-                bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600
+                bg-gradient-to-r from-[#C98778] to-[#B56A5A]
                 shadow-md hover:shadow-2xl
                 hover:scale-[1.03] hover:-translate-y-1 hover:brightness-110
                 transition-all duration-300"
@@ -155,7 +117,7 @@ const Procedures = () => {
             <button
               onClick={handlePagamento}
               className="w-full mb-4 py-3 rounded-2xl text-white font-semibold
-              bg-gradient-to-r from-green-500 to-emerald-600
+              bg-gradient-to-r from-[#C98778] to-[#B56A5A]
               hover:scale-[1.02] hover:-translate-y-1 hover:brightness-110
               transition-all duration-300"
             >
@@ -165,7 +127,7 @@ const Procedures = () => {
             <button
               onClick={handlePagamento}
               className="w-full py-3 rounded-2xl text-white font-semibold
-              bg-gradient-to-r from-emerald-600 to-green-700
+              bg-gradient-to-r from-[#B56A5A] to-[#9E5649]
               hover:scale-[1.02] hover:-translate-y-1 hover:brightness-110
               transition-all duration-300"
             >
